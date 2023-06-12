@@ -10,9 +10,9 @@ MODEL:
   NORM_MODE: sync_bn
   FILTERS: [32, 64, 96, 128, 160]
 DATASET:
-  IMAGE_NAME: images/im_sample_A_20160501.h5
-  LABEL_NAME: labels/label_sample_A_20160501.h5
-  INPUT_PATH: /home/suryakalia/documents/summer/datasets/cremi_edited/
+  IMAGE_NAME: images/im_A_v2_200.h5@images/im_B_v2_200.h5@images/im_C_v2_200.h5
+  LABEL_NAME: gt-syn/syn_A_v2_200.h5@gt-syn/syn_B_v2_200.h5@gt-syn/syn_C_v2_200.h5
+  INPUT_PATH: datasets/CREMI/
   OUTPUT_PATH: outputs/CREMI_syn_baseline
   PAD_SIZE: [0, 32, 32]
   REJECT_SAMPLING:
@@ -30,7 +30,7 @@ INFERENCE:
   INPUT_SIZE: [17, 257, 257]
   OUTPUT_SIZE: [17, 257, 257]
   OUTPUT_ACT: ["sigmoid"]
-  IMAGE_NAME: images/im_sample_A_20160501.h5
+  IMAGE_NAME: images/im_A+_v2_200_nocrack.h5@images/im_B+_v2_200.h5@images/im_C+_v2_200.h5
   OUTPUT_PATH: outputs/CREMI_syn_baseline/test
   OUTPUT_NAME: result.h5
   DO_SINGLY: True
