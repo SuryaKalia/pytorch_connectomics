@@ -1,8 +1,8 @@
 # All other configurations are set by default. If you want to add new config options,
 # please modify ../connectomics/config/defaults.py
 SYSTEM:
-  NUM_GPUS: 3
-  NUM_CPUS: 12
+  NUM_GPUS: 1
+  NUM_CPUS: 8
 MODEL:
   INPUT_SIZE: [17, 257, 257]
   OUTPUT_SIZE: [17, 257, 257]
@@ -10,8 +10,8 @@ MODEL:
   NORM_MODE: sync_bn
   FILTERS: [32, 64, 96, 128, 160]
 DATASET:
-  IMAGE_NAME: images/im_sample_A_20160501.h5
-  LABEL_NAME: labels/label_sample_A_20160501.h5
+  IMAGE_NAME: images/im_sample_A_20160501.h5@images/im_sample_B_20160501.h5@images/im_sample_C_20160501.h5
+  LABEL_NAME: labels/label_sample_A_20160501.h5@labels/label_sample_B_20160501.h5@labels/label_sample_C_20160501.h5
   INPUT_PATH: /home/suryakalia/documents/summer/datasets/cremi_edited/
   OUTPUT_PATH: outputs/CREMI_syn_baseline
   PAD_SIZE: [0, 32, 32]
@@ -30,7 +30,7 @@ INFERENCE:
   INPUT_SIZE: [17, 257, 257]
   OUTPUT_SIZE: [17, 257, 257]
   OUTPUT_ACT: ["sigmoid"]
-  IMAGE_NAME: images/im_sample_A_20160501.h5
+  IMAGE_NAME: images/im_sample_A_20160501.h5@images/im_sample_B_20160501.h5@images/im_sample_C_20160501.h5
   OUTPUT_PATH: outputs/CREMI_syn_baseline/test
   OUTPUT_NAME: result.h5
   DO_SINGLY: True

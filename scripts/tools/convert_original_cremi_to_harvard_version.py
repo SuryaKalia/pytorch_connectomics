@@ -28,10 +28,15 @@ def main():
   img_output = h5py.File(output_dir + "/images/im_" + output_filename_prefix + ".h5" , 'w')
   label_output = h5py.File(output_dir + "/labels/label_" + output_filename_prefix + ".h5" , 'w')
   
+  
+  # Replace backgorund voxel label value from 2^64-1 to 0 for processing by pytorch connectomics
+  raw_label = np.array(f["volumes/labels/clefts"])
+  raw_label[raw_label == int(18446744073709551615)] = int(0)
+  
   img_output.create_dataset('images', data=np.array(f["volumes/raw"]), compression="gzip", compression_opts=7)
   img_output.close()
   
-  label_output.create_dataset('labels', data=np.array(f["volumes/labels/clefts"]), compression="gzip", compression_opts=7)
+  label_output.create_dataset('labels', data=raw_label, compression="gzip", compression_opts=7)
   label_output.close()
 
 
